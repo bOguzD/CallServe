@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CallServe.Core.EntityRepositories.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ namespace CallServe.Core.UnitOfWorks
 {
     public interface IUnitOfWork
     {
+        IProductRepository Product { get; }
+
         Task CommitAsync();
         void Commit();
     }
