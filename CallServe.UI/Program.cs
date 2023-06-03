@@ -1,32 +1,7 @@
-using CallServe.Core;
-using CallServe.Core.Repositories.Contracts;
-using CallServe.Core.UnitOfWorks;
-using CallServe.Service.Service;
-using CallServe.Service.Service.Contracts;
-using CallServe.Service.Services.EntityServices;
-using CallServe.Service.Services.EntityServices.Contracts;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
-
-var configuration = builder.Configuration;
-var services = builder.Services;
-
-//services.AddDependencyResolvers(configuration);
-
-services.AddEndpointsApiExplorer();
-services.AddMemoryCache();
-
-services.AddDbContext<CallServeContext>();
-services.AddScoped(typeof(IRepository<>), typeof(IRepository<>));
-services.AddScoped(typeof(IService<>), typeof(Service<>));
-services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-services.AddTransient<IProductService, ProductService>();
-
 
 var app = builder.Build();
 
